@@ -17,7 +17,6 @@
 package task1;
 
 import menu.Menu;
-import java.lang.System;
 
 /**
  *
