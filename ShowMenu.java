@@ -46,4 +46,11 @@ public class ShowMenu {
         System.out.println("3. Поиск с верхней границейю");
         System.out.println("4. Назад.");
     }
+    
+    public static void showFlavoringMenu(){
+        System.out.println("Выберите заправку для салата:");
+        System.out.println("1. Майонез (680 ккал / 100 г)");
+        System.out.println("2. Уксус (18 ккал / 100 г)");
+        System.out.println("3. Без заправки");
+    }
 }

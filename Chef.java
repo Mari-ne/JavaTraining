@@ -12,6 +12,7 @@ import salad.VinegarSalad;
 import table.CookTable;
 import vegetable.*;
 import service.Service;
+import menu.ShowMenu;
 
 /**
  *
@@ -68,10 +69,7 @@ public class Chef {
         Service.separator();
         int choosen;
         if(flavoring == 0){
-            System.out.println("Выберите заправку для салата:");
-            System.out.println("1. Майонез (680 ккал / 100 г)");
-            System.out.println("2. Уксус (18 ккал / 100 г");
-            System.out.println("3. Без заправки");
+            ShowMenu.showFlavoringMenu();
         }
         do{
             if(flavoring == 0){
