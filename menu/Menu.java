@@ -22,7 +22,7 @@ public class Menu {
     
     public Menu(){
         chef = new Chef();
-        chef.makeSalad("", new Vegetable[0], 0);
+        chef.makeSalad("", new Vegetable[0], null);
     }  
         
     public void mainMenu(){
@@ -87,7 +87,7 @@ public class Menu {
                     break;
                 }
                 case 3:{
-                    chef.makeSalad(chef.getSalad().getName(), chef.getSalad().getIngredients(), 0);
+                    chef.makeSalad(chef.getSalad().getName(), chef.getSalad().getIngredients(), null);
                 }
                 case 4:{
                     break;
