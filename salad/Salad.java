@@ -2,6 +2,7 @@ package salad;
 
 import vegetable.Vegetable;
 import calority.CalorityCounter;
+import flavoring.Flavoring;
 import java.util.Arrays;
 import java.lang.System;
 
@@ -10,21 +11,17 @@ import java.lang.System;
  * @author Admin
  */
 public class Salad {
-    String name;
-    String flavoring;
-    double flavoringCaloricity;
-    double totalCaloricity; //общая калорийность салата
-    Vegetable[] ingredients; //используемые в салате ингредиенты
+    private String name;
+    protected double totalCaloricity; //общая калорийность салата
+    private Vegetable[] ingredients; //используемые в салате ингредиенты
     
-    public Salad(String name, String flavoring, Vegetable[] vegetables, double flavorCaloricity){
+    public Salad(String name, Vegetable[] vegetables){
         this.name = name;
-        this.flavoring = flavoring;
-        this.flavoringCaloricity = flavorCaloricity;
         
         ingredients = new Vegetable[vegetables.length];
         ingredients = Arrays.copyOf(vegetables, vegetables.length);
         
-        totalCaloricity = CalorityCounter.countTotalCaloricity(ingredients, this.flavoringCaloricity);
+        totalCaloricity = CalorityCounter.countTotalCaloricity(this);
     }
     
     public String getName(){
@@ -35,12 +32,8 @@ public class Salad {
         name = newName;
     }
     
-    public int getFlavoring(){
-        return 3;
-    }
-    
-    public void setFlaforing(String newFlavoring){
-        flavoring = newFlavoring;
+    public Flavoring getFlavoring(){
+        return new Flavoring();
     }
     
     public double getTotalCaloricity(){
@@ -48,9 +41,7 @@ public class Salad {
     }
     
     protected void setTotalCaloricity(double newTotalCaloricity){
-        if(totalCaloricity == 0){
-            totalCaloricity = newTotalCaloricity;
-        }
+        totalCaloricity = newTotalCaloricity;
     }
     
     public Vegetable[] getIngredients(){
@@ -61,7 +52,7 @@ public class Salad {
         totalCaloricity = 0;
         ingredients = new Vegetable[newIngredients.length];
         ingredients = Arrays.copyOf(newIngredients, newIngredients.length);
-        totalCaloricity = CalorityCounter.countTotalCaloricity(ingredients, flavoringCaloricity);
+        totalCaloricity = CalorityCounter.countTotalCaloricity(this);
     }
     
     public void show(){
@@ -72,8 +63,30 @@ public class Salad {
             System.out.print(i + "|");
             ingredients[i - 1].show();
         }
-        System.out.println("Калорийность салата (без заправки): " + (totalCaloricity + flavoringCaloricity));
-        System.out.println("Калорийность салата (с учетом заправки): " + totalCaloricity);
-        System.out.println("В качестве заправки использовался " + flavoring + ".");
+        System.out.println("Калорийность салата: " + totalCaloricity);
+    }
+    
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj){
+            return true;
+        }
+        if(obj == null){
+            return false;
+        }
+        
+        if(!(obj instanceof Salad)){
+            return false;
+        }         
+        Salad tmp = (Salad)obj;
+        if(name.equals(tmp.name)){
+            for(int i = 0; i < ingredients.length; i ++){
+                if(!ingredients[i].equals(tmp.ingredients[i])){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }
