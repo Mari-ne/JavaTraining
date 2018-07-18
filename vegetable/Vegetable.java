@@ -66,4 +66,28 @@ public class Vegetable {
         System.out.printf("%10s\t|%15s\t|%15s\t|\t%.2f\t|\t", 
                 name, groupName, color, caloricity);
     }
+    
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj){
+            return true;
+        }
+        if(obj == null){
+            return false;
+        }
+        
+        if(!(obj instanceof Vegetable)){
+            return false;
+        }
+        
+        Vegetable tmp = (Vegetable)obj;
+        if(name.equals(tmp.name)){
+            if(color.equals(tmp.color)){
+                if(caloricity == tmp.caloricity){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
