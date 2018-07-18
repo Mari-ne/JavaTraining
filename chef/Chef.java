@@ -8,6 +8,7 @@ package chef;
 import java.util.Scanner;
 import salad.MayonnaiseSalad;
 import salad.Salad;
+import flavoring.Flavoring;
 import salad.VinegarSalad;
 import table.CookTable;
 import vegetable.*;
@@ -22,7 +23,7 @@ public class Chef {
     
     Salad salad;
     
-    public void makeSalad(String name_, Vegetable[] ingredients_, int flavoring){
+    public void makeSalad(String name_, Vegetable[] ingredients_, Flavoring flavoring){
         Scanner input = new Scanner(System.in);
         String name;
         CookTable table = new CookTable();
@@ -67,16 +68,29 @@ public class Chef {
             table.setIngredients(ingredients_);
         }
         Service.separator();
-        int choosen;
-        if(flavoring == 0){
+        int choosen = 0;
+        if(flavoring == null){
             ShowMenu.showFlavoringMenu();
         }
         do{
-            if(flavoring == 0){
+            if(flavoring == null){
                 choosen = input.nextInt();
             }
             else{
-                choosen = flavoring;
+                switch(flavoring.getName()){
+                    case "Майонез":{
+                        choosen = 1;
+                        break;
+                    }
+                    case "Уксус":{
+                        choosen = 2;
+                        break;
+                    }
+                    case "-":{
+                        choosen = 3;
+                        break;
+                    }
+                }
             }
             switch(choosen){
                 case 1:{
@@ -88,7 +102,7 @@ public class Chef {
                     break;
                 }
                 case 3:{
-                    salad = new Salad(name, "-", table.getIngredients(), 0);
+                    salad = new Salad(name, table.getIngredients());
                     break;
                 }
                 default:{
