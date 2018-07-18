@@ -53,8 +53,8 @@ public class CookTable {
     }
     
     public void setIngredients(Vegetable[] ingredients){
-        for(int i = 0, j = 0; i < vegetables.length; i ++){
-            if(vegetables[i].getName().equals(ingredients[j].getName())){
+        for(int i = 0, j = 0; j < ingredients.length; i ++){
+            if(vegetables[i].equals(ingredients[j])){
                 vegetables[i].setQuantity(ingredients[j].getQuantity());
                 j ++;
             }
