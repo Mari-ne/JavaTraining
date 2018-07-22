@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.Formatter;
 
 import entity.Vegetable;
+import service.logger.*;
 
 /**
  *
@@ -13,6 +15,9 @@ import entity.Vegetable;
  */
 public class CookTable {
     private List<Vegetable> vegetables;
+    private static InfoLogger infoLog = new InfoLogger(InfoLogger.class);
+    private static ErrorLogger errorLog = new ErrorLogger(ErrorLogger.class);
+    private static DebugLogger debugLog = new DebugLogger(DebugLogger.class);
     
     public CookTable(){
         vegetables = new ArrayList<>();
@@ -29,7 +34,9 @@ public class CookTable {
         Scanner input  = new Scanner(System.in);
         
         while(true){
-            System.out.printf("%10s\t|%s\t|\t%s\n", "Name", " Caloricity ", "Quantity");
+            Formatter format = new Formatter(); //java.util.Formatter
+            format.format("%10s\t|%s\t|\t%s\n", "Name", " Caloricity ", "Quantity");//create string with set format
+            infoLog.info(format.toString());
             double quantity;
             int zeroQuantity = 0; //need for preventing situation when there is no chosen vegetables
             for(int i = 0; i < vegetables.size(); i ++){
@@ -44,14 +51,16 @@ public class CookTable {
                     }
                 }
                 catch(InputMismatchException e){
-                    System.out.println("You should input only numbers!");
+                    errorLog.getLogger().error("Incorrext input of number\n");
+                    infoLog.info("You should input only numbers!\n");
                     input.nextLine();
                     i --;
                 }                
             }
             if(zeroQuantity == vegetables.size()){
                 //all vegetables is unused
-                System.out.println("You should choose at least one vegetable to your salad!");
+                errorLog.getLogger().error("Was choosen 0 ingredients\n");
+                infoLog.info("You should choose at least one vegetable to your salad!\n");
             }
             else{
                 break;
@@ -60,6 +69,7 @@ public class CookTable {
     }
     
     public List<Vegetable> getVegetables(){
+        debugLog.getLogger().debug("Get choosen ingredients\n");
         List<Vegetable> tmp = new ArrayList<>();
         for(Vegetable vegi : vegetables){
             if(vegi.getQuantity() != 0.0){
