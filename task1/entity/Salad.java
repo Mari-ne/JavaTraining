@@ -1,28 +1,27 @@
-package entity;
+package task1.entity;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Formatter;
+import org.apache.log4j.Logger;
 
-import service.CaloricityCounter;
-import service.logger.*;
+import task1.service.CaloricityCounter;
 
 public class Salad {
     private String name;
     private List<Vegetable> ingredients; //used in salad vegetables
-    protected double totalCaloricity;
+    private double totalCaloricity;
     
-    private static InfoLogger infoLog = new InfoLogger(InfoLogger.class);
-    private static DebugLogger debugLog = new DebugLogger(DebugLogger.class);
+    final private static Logger LOGGER = Logger.getLogger(Salad.class);
     
     public Salad(String name, List<Vegetable> ingredients){
         this.name = name;
         this.ingredients = new ArrayList<>();
         this.ingredients.addAll(ingredients);
         totalCaloricity = CaloricityCounter.countTotalCaloricity(this);
-        debugLog.getLogger().debug("Create " + toString() + "\n");
+        LOGGER.debug("Create " + toString() + "\n");
     }
     
     public String getName(){
@@ -32,7 +31,7 @@ public class Salad {
     public void setName(String newName){
         Formatter format = new Formatter();
         format.format("Set new name %s -> %s. Object ", name, newName);
-        debugLog.getLogger().debug(format.toString() + toString() + "\n");
+        LOGGER.debug(format.toString() + toString() + "\n");
         name = newName;
     }
     
@@ -45,7 +44,7 @@ public class Salad {
     }
     
     public void setIngredients(List<Vegetable> newIngredients){
-        debugLog.getLogger().debug("Set new ingredients. Object " + toString() + "\n");
+        LOGGER.debug("Set new ingredients. Object " + toString() + "\n");
         ingredients.clear();
         ingredients = new ArrayList<>();
         ingredients.addAll(newIngredients);
@@ -55,8 +54,8 @@ public class Salad {
     public void show(){
         Formatter format = new Formatter();
         format.format("Total caloricity:  %f\n%10s\t|%s\t|\t%s\n", totalCaloricity, "Name", " Caloricity ", "Quantity");
-        infoLog.info("Name: " + name + "\n");
-        infoLog.info(format.toString());
+        LOGGER.info("Name: " + name + "\n");
+        LOGGER.info(format.toString());
         ingredients.forEach((vegi) -> vegi.show(true));
     }
     
