@@ -1,10 +1,10 @@
-package service;
+package task1.service;
 
 import java.util.List;
+import org.apache.log4j.Logger;
 
-import entity.Vegetable;
-import entity.Salad;
-import service.logger.DebugLogger;
+import task1.entity.Vegetable;
+import task1.entity.Salad;
 
 /**
  *
@@ -12,10 +12,10 @@ import service.logger.DebugLogger;
  */
 public class CaloricityCounter {
     
-    private static DebugLogger debugLog = new DebugLogger(DebugLogger.class);
+    final private static Logger LOGGER = Logger.getLogger(CaloricityCounter.class);
     
     public static double countTotalCaloricity(Salad salad){
-        debugLog.getLogger().debug("Count total caloricity of salad\n");
+        LOGGER.debug("Count total caloricity of salad\n");
         double tmpCaloricity = 0;
         List<Vegetable> ingredients = salad.getIngredients();
         for(Vegetable vegetable : ingredients){
