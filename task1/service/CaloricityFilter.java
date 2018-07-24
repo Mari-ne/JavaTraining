@@ -1,10 +1,10 @@
-package service;
+package task1.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 
-import entity.*;
-import service.logger.DebugLogger;
+import task1.entity.*;
 
 /**
  *
@@ -12,13 +12,13 @@ import service.logger.DebugLogger;
  */
 public class CaloricityFilter {
     
-    private static DebugLogger debugLog = new DebugLogger(DebugLogger.class);
+    final private static Logger LOGGER = Logger.getLogger(CaloricityFilter.class);
     
-    public static List<Vegetable> twoBoundFilter(Salad salad, double min, double max){
-        debugLog.getLogger().debug("Two bounds filtration\n");
+    public static List<Vegetable> filtration(Salad salad, double lowerBound, double upperBound){
+        LOGGER.debug("Two bounds filtration\n");
         List<Vegetable> tmp = new ArrayList<>();
         for(Vegetable vegi : salad.getIngredients()){
-            if(vegi.getCaloricity() > min && vegi.getCaloricity() < max){
+            if(vegi.getCaloricity() > lowerBound && vegi.getCaloricity() < upperBound){
                 tmp.add(vegi);
             }
         }
