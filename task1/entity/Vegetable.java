@@ -1,8 +1,7 @@
-package entity;
+package task1.entity;
 
 import java.util.Formatter;
-
-import service.logger.*;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -13,19 +12,18 @@ public class Vegetable{
     private double caloricity; //amount of clories on 100g
     private double quantity;
     
-    private static InfoLogger infoLog = new InfoLogger(InfoLogger.class);
-    private static DebugLogger debugLog = new DebugLogger(DebugLogger.class);
+    final private static Logger LOGGER = Logger.getLogger(Vegetable.class);
     
     public Vegetable(String name, double caloricity){
         this.name = name;
         this.caloricity = caloricity;
-        debugLog.getLogger().debug("Create " + toString() + "\n");
+        LOGGER.debug("Create " + toString() + "\n");
     }
     
     public Vegetable(String name, double caloricity, double quantity){
         this(name, caloricity);
         this.quantity = quantity;
-        debugLog.getLogger().debug("Create " + toString() + "\n");
+        LOGGER.debug("Create " + toString() + "\n");
     }
     
     public String getName(){
@@ -35,7 +33,7 @@ public class Vegetable{
     public void setName(String newName){
         Formatter format = new Formatter();
         format.format("Set new name %s -> %s. Object ", name, newName);
-        debugLog.getLogger().debug(format.toString() + toString() + "\n");
+        LOGGER.debug(format.toString() + toString() + "\n");
         name = newName;
     }
     
@@ -46,7 +44,7 @@ public class Vegetable{
     public void setCaloricity(double newCaloricity){
         Formatter format = new Formatter();
         format.format("Set new caloricity %f -> %f. Object ", caloricity, newCaloricity);
-        debugLog.getLogger().debug(format.toString() + toString() + "\n");
+        LOGGER.debug(format.toString() + toString() + "\n");
         caloricity = newCaloricity;
     }
     
@@ -56,8 +54,8 @@ public class Vegetable{
     
     public void setQuantity(double newQuantity){
         Formatter format = new Formatter();
-        format.format("Set new quantity %f -> %f.", quantity, newQuantity);
-        debugLog.getLogger().debug(format.toString() + toString() + "\n");
+        format.format("Set new quantity %f -> %f. Object ", quantity, newQuantity);
+        LOGGER.debug(format.toString() + toString() + "\n");
         quantity = newQuantity;
     }
     
@@ -68,7 +66,7 @@ public class Vegetable{
             //quantity will be shown in the end of making salad
             format.format("%f\n", quantity);
         }        
-        infoLog.info(format.toString());
+        LOGGER.info(format.toString());
     }
     
     @Override
