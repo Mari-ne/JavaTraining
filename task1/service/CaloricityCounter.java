@@ -12,10 +12,10 @@ import task1.entity.Salad;
  */
 public class CaloricityCounter {
     
-    final private static Logger LOGGER = Logger.getLogger(CaloricityCounter.class);
+    private static final Logger LOGGER = Logger.getLogger(CaloricityCounter.class);
     
     public static double countTotalCaloricity(Salad salad){
-        LOGGER.debug("Count total caloricity of salad\n");
+        LOGGER.debug("Count total caloricity of salad.");
         double tmpCaloricity = 0;
         List<Vegetable> ingredients = salad.getIngredients();
         for(Vegetable vegetable : ingredients){
