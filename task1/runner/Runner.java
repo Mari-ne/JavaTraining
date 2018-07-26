@@ -17,14 +17,14 @@ import task1.service.comporator.*;
  */
 public class Runner {
     
-    final private static Logger LOGGER = Logger.getLogger(Runner.class);
+    private static final Logger LOGGER = Logger.getLogger(Runner.class);
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-        LOGGER.debug("Start\n");
+        LOGGER.debug("Start");
         
         while(true){
             Scanner input = new Scanner(System.in);
@@ -32,30 +32,30 @@ public class Runner {
             String name = "";
             CookTable table = new CookTable();
             
-            LOGGER.debug("Start of new iteration\n");
+            LOGGER.debug("Start of new iteration");
             
-            LOGGER.info("Hello! Now you will create new salad!\n");
+            LOGGER.info("Hello! Now you will create new salad!");
             while(name.equals("")){
                 LOGGER.info("Firstly, input name for new salad: ");
                 name = input.nextLine();
                 if(name.equals("")){
-                    LOGGER.error("Empty string input\n");
-                    LOGGER.info("Name can't be empty!\n");
+                    LOGGER.error("Empty string input");
+                    LOGGER.info("Name can't be empty!");
                 }
             }            
-            LOGGER.debug("Succesful input of name\n");
+            LOGGER.debug("Succesful input of name");
             
-            LOGGER.info("Next, you will choose ingedients. If you don't want some vegetable, input 0.\n");
+            LOGGER.info("Next, you will choose ingedients. If you don't want some vegetable, input 0.");
             table.chooseIngredients();            
-            LOGGER.debug("Succesful ingedients choose\n");
+            LOGGER.debug("Succesful ingedients choose");
 
             Salad salad = new Salad(name, table.getVegetables());
-            LOGGER.debug("New object of Salad was created\n");
+            LOGGER.debug("New object of Salad was created");
             
-            LOGGER.info("You made next salad:\n");
+            LOGGER.info("You made next salad:");
             salad.show();
             
-            LOGGER.info("Next, input bounds for searching.\n");
+            LOGGER.info("Next, input bounds for searching.");
             double lower = 0.0, upper = 0.0;
             while(true){
                 try{
@@ -68,31 +68,31 @@ public class Runner {
                         break;
                     }
                     else{
-                        LOGGER.error("Upper bound less then lower bound\n");
-                        LOGGER.info("Lower bound must be less then upper!\n");
+                        LOGGER.error("Upper bound less then lower bound");
+                        LOGGER.info("Lower bound must be less then upper!");
                     }
                 }
                 catch(InputMismatchException e){
-                    LOGGER.error(e.getMessage(), e);
-                    LOGGER.info("Bounds should be numbers!\n");
+                    LOGGER.error("InputMismatchException - Incorrect type input:  double was expected", e);
+                    LOGGER.info("Bounds should be numbers!");
                     input.nextLine();
                 }                
             }
             List<Vegetable> filterd = CaloricityFilter.filtration(salad, lower, upper);
-            LOGGER.info("Search results:\n");
+            LOGGER.info("Search results:");
             if(filterd.isEmpty()){
-                LOGGER.info("None\n");
+                LOGGER.info("None");
             }
             else{
                 filterd.forEach((vegi) -> vegi.show(true));
             }
-            LOGGER.debug("Search succesfully completed\n");
+            LOGGER.debug("Search succesfully completed");
             
             
-            LOGGER.info("Next, choose parametr for sorting.\n");
-            LOGGER.info("1. Name\n");
-            LOGGER.info("2. Caloricity\n");
-            LOGGER.info("3. Quantity\n");
+            LOGGER.info("Next, choose parametr for sorting.");
+            LOGGER.info("1. Name");
+            LOGGER.info("2. Caloricity");
+            LOGGER.info("3. Quantity");
             int choose = 0;
             Comparator<Vegetable> compor = null;
             while(choose < 1 || choose > 3){
@@ -112,22 +112,22 @@ public class Runner {
                             break;
                         }
                         default:{
-                            LOGGER.error("Number out of range\n");
-                            LOGGER.info("You should input 1, 2 or 3!\n");
+                            LOGGER.error("Number out of range");
+                            LOGGER.info("You should input 1, 2 or 3!");
                         }
                     }
                 }
                 catch(InputMismatchException e){
-                    LOGGER.error(e.getMessage(), e);
-                    LOGGER.info("You should input 1, 2 or 3!\n");
+                    LOGGER.error("InputMismatchException - Incorrect type input: int was expected", e);
+                    LOGGER.info("You should input 1, 2 or 3!");
                     input.nextLine();
                 }
             }
             salad.sortIngredients(compor);
             salad.show();            
-            LOGGER.debug("Sorting succesfully completed\n");
+            LOGGER.debug("Sorting succesfully completed.");
             
-            LOGGER.info("Do you want to create a new salad? If yes, then input 1.\n");
+            LOGGER.info("Do you want to create a new salad? If yes, then input 1.");
             int in = 0; //if user type not int, programm will finish its work (beause not 1)
             try{
                 in = input.nextInt();
@@ -137,7 +137,7 @@ public class Runner {
                 //try-catch is need only to prevent error
             }
             if(in != 1){
-                LOGGER.info("Bye!\n");
+                LOGGER.info("Bye!");
                 break;
             }
         }
