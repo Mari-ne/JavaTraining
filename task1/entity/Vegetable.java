@@ -12,7 +12,7 @@ public class Vegetable{
     private double caloricity; //amount of clories on 100g
     private double quantity;
     
-    final private static Logger LOGGER = Logger.getLogger(Vegetable.class);
+    private static final Logger LOGGER = Logger.getLogger(Vegetable.class);
     
     public Vegetable(String name, double caloricity){
         this.name = name;
