@@ -16,7 +16,7 @@ import task1.entity.Vegetable;
 public class CookTable {
     private List<Vegetable> vegetables;
     
-    final private static Logger LOGGER = Logger.getLogger(CookTable.class);
+    private static final Logger LOGGER = Logger.getLogger(CookTable.class);
     
     public CookTable(){
         vegetables = new ArrayList<>();
@@ -34,7 +34,7 @@ public class CookTable {
         
         while(true){
             Formatter format = new Formatter(); //java.util.Formatter
-            format.format("%10s\t|%s\t|\t%s\n", "Name", " Caloricity ", "Quantity");//create string with set format
+            format.format("%10s\t|%s\t|\t%s", "Name", " Caloricity ", "Quantity");//create string with set format
             LOGGER.info(format.toString());
             double quantity;
             int zeroQuantity = 0; //need for preventing situation when there is no chosen vegetables
@@ -50,16 +50,16 @@ public class CookTable {
                     }
                 }
                 catch(InputMismatchException e){
-                    LOGGER.error(e.getMessage(), e);
-                    LOGGER.info("You should input only numbers!\n");
+                    LOGGER.error("InputMismatchException - Incorrect type input:  double was expected", e);
+                    LOGGER.info("You should input only numbers!");
                     input.nextLine();
                     i --;
                 }                
             }
             if(zeroQuantity == vegetables.size()){
                 //all vegetables is unused
-                LOGGER.error("Was choosen 0 ingredients\n");
-                LOGGER.info("You should choose at least one vegetable to your salad!\n");
+                LOGGER.error("Was choosen 0 ingredients.");
+                LOGGER.info("You should choose at least one vegetable to your salad!");
             }
             else{
                 break;
@@ -68,7 +68,7 @@ public class CookTable {
     }
     
     public List<Vegetable> getVegetables(){
-        LOGGER.debug("Get choosen ingredients\n");
+        LOGGER.debug("Get choosen ingredients.");
         List<Vegetable> tmp = new ArrayList<>();
         for(Vegetable vegi : vegetables){
             if(vegi.getQuantity() != 0.0){
