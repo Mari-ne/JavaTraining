@@ -14,7 +14,7 @@ public class Salad {
     private List<Vegetable> ingredients; //used in salad vegetables
     private double totalCaloricity;
     
-    final private static Logger LOGGER = Logger.getLogger(Salad.class);
+    private static final Logger LOGGER = Logger.getLogger(Salad.class);
     
     public Salad(String name, List<Vegetable> ingredients){
         this.name = name;
