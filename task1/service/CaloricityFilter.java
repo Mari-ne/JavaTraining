@@ -12,10 +12,10 @@ import task1.entity.*;
  */
 public class CaloricityFilter {
     
-    final private static Logger LOGGER = Logger.getLogger(CaloricityFilter.class);
+    private static final Logger LOGGER = Logger.getLogger(CaloricityFilter.class);
     
     public static List<Vegetable> filtration(Salad salad, double lowerBound, double upperBound){
-        LOGGER.debug("Two bounds filtration\n");
+        LOGGER.debug("Two bounds filtration.");
         List<Vegetable> tmp = new ArrayList<>();
         for(Vegetable vegi : salad.getIngredients()){
             if(vegi.getCaloricity() > lowerBound && vegi.getCaloricity() < upperBound){
