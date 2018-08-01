@@ -79,7 +79,6 @@ public class Runner {
 				LOGGER.info(e.getMessage() + "\n");
 			}
 		}
-		
 		try {
 			text.write(file);
 		} catch (IOException e) {
@@ -108,6 +107,8 @@ public class Runner {
 			LOGGER.info("Text hasn't words in qestion sentences with length " + size);
 		}
 		else {
+			LOGGER.info("Text has " + result.size() + " words with size of ");
+			LOGGER.info(size + " letters in question sentenses\n");
 			for(String s : result) {
 				LOGGER.info(s + "\n");
 			}
