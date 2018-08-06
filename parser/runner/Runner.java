@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 import parser.entity.CompositeTextFragment;
 import parser.service.FileHandler;
-import parser.service.Extruder;
 import parser.service.MainLogic;
+import parser.service.chain.*;
 
 public class Runner {
 
@@ -24,8 +24,7 @@ public class Runner {
 		String filePath = "";
 		FileHandler file = null;
 		while(true) {
-			try{
-				//try-with-resources	
+			try{	
 				LOGGER.info("Enter path to file: ");
 				filePath = input.nextLine();
 				if(filePath.equals("")) {
@@ -44,14 +43,15 @@ public class Runner {
 			}catch(IOException e) {
 				LOGGER.info("File " + filePath + " is empty. Please, enter path to file again.\n");
 				LOGGER.error(e.getMessage());
-			}catch(Exception e) { 
-				//while I don't know specific type, I will use basic class to catch exceptions
-				LOGGER.info(e.getMessage());
 			}
 		}
-		CompositeTextFragment text = null;
+		
+		CompositeTextFragment text = new CompositeTextFragment();
+		Parser parser = new ListingParser();
+		parser.linkWith(new ParagraphParser()).linkWith(new SentenceParser());
 		try {
-			text = (CompositeTextFragment)Extruder.divider(file.read());
+			String data = file.read();
+			text = (CompositeTextFragment) parser.parsing(data);
 		} catch (IOException e) {
 			LOGGER.info(e.getMessage());
 		}
@@ -74,11 +74,12 @@ public class Runner {
 				//this exception can throw constructor of FileReader
 				LOGGER.info("File " + filePath + " exist. Please, enter path to file again.\n");				
 				LOGGER.error(e.getMessage());
-			}catch(Exception e) { 
-				//while I don't know specific type, I will use basic class to catch exceptions
-				LOGGER.info(e.getMessage() + "\n");
+			}catch(Exception e) {
+				LOGGER.error(e.getMessage());
+				LOGGER.info(e.getMessage());
 			}
 		}
+		
 		try {
 			text.write(file);
 		} catch (IOException e) {
@@ -96,9 +97,6 @@ public class Runner {
 				//this exception can throw constructor of FileReader
 				LOGGER.info("You should enter only numbers!\n");				
 				LOGGER.error(e.getMessage());
-			}catch(Exception e) { 
-				//while I don't know specific type, I will use basic class to catch exceptions
-				LOGGER.info(e.getMessage());
 			}
 		}
 		
@@ -113,6 +111,7 @@ public class Runner {
 				LOGGER.info(s + "\n");
 			}
 		}
+		
 		input.close();
 		LOGGER.debug("Finish application.");
 
