@@ -31,32 +31,6 @@ public class CompositeTextFragment implements TextFragment {
 	public List<TextFragment> getChildren(){
 		return children;
 	}
-	
-	public boolean remove(TextFragment fragment) {
-		LOGGER.debug("Removing one occurrence of fragment."); //THINK HOW TO SHOW VALUE OF fragment
-		if(children.contains(fragment)) {
-			children.remove(fragment);
-			return true;
-		}
-		return false;
-	}
-	
-	/**Removes all occurrence of fragment
-	 * @param fragment 
-	 * Fragment of text, which need to delete
-	 * @return true, if fragment was at least once
-	 * 		   false otherwise.
-	*/
-	public boolean removeAll(TextFragment fragment) {
-		LOGGER.debug("Removing all occurrence of fragment."); //THINK HOW TO SHOW VALUE OF fragment
-		if(children.contains(fragment)) {
-			while(children.contains(fragment)) {
-				children.remove(fragment);
-			}
-			return true;
-		}
-		return false;
-	}
 
 	@Override
 	public void write(FileHandler file) throws IOException{
