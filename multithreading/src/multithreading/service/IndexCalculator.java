@@ -47,14 +47,17 @@ public class IndexCalculator {
 		if(statistic[i][0] != 0.0) {
 			//was some deals
 			newIndex = statistic[i][1] / statistic[i][0];
+			statistic[i][0] = 0.0;
+			statistic[i][1] = 0.0;
 			newIndex = (StockExchange.getInstance().getBuyIndex(curr) + newIndex) / 2;
 			newIndex = new BigDecimal(newIndex).setScale(2, RoundingMode.HALF_UP).doubleValue();
 			StockExchange.getInstance().setBuyIndex(newIndex, curr);
 			LOGGER.debug("Change buy index for " + curr.name() + " to " + newIndex);
 		}
 		if(statistic[i][2] != 0.0) {
-			
 			newIndex = statistic[i][3] / statistic[i][2];
+			statistic[i][2] = 0.0;
+			statistic[i][3] = 0.0;
 			newIndex = (StockExchange.getInstance().getSellIndex(curr) + newIndex) / 2;
 			newIndex = new BigDecimal(newIndex).setScale(2, RoundingMode.HALF_UP).doubleValue();
 			StockExchange.getInstance().setSellIndex(newIndex, curr);
