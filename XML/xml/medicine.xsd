@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<schema xmlns = 'http://www.w3.org/2001/XMLSchema'
+		targetNamespace = 'medicine'
+        xmlns:tns = 'medicine'
+		elementFormDefault = 'qualified'>
+
+<element name = 'medicines'>
+	<complexType>
+		<sequence>
+			<element ref = 'tns:medicine' minOccurs = '2' maxOccurs = 'unbounded'/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name = 'medicine' type = 'tns:Medicine' abstract = 'true' />
+<element name = 'certificated' type = 'tns:Certificated' substitutionGroup = 'tns:medicine' />
+
+<complexType name = 'Medicine'>
+	<sequence>
+		<element name = 'analogs' type = 'string' />
+		<element name = 'price' type = 'float' />
+		<element name = 'wrapped' type = 'dateTime' />
+		<element name = 'form'>
+			<simpleType>
+				<restriction base = 'string'>
+					<enumeration value = 'pills' />
+					<enumeration value = 'syrup' />
+				</restriction>
+			</simpleType>
+		</element>
+		<element name = 'dosage' type = 'tns:Dosage' />
+	</sequence>
+	<attribute name = 'name' type = 'string' use = 'required' />
+	<attribute name = 'pharm' type = 'string' use = 'required' />
+	<attribute name = 'group' use = 'required'>
+		<simpleType>
+			<restriction base = 'string'>
+				<enumeration value = 'chemicals' />
+				<enumeration value = 'antibiotics' />
+				<enumeration value = 'vitamins' />
+				<enumeration value = 'vaccine' />
+				<enumeration value = 'homeopatic' />
+			</restriction>
+		</simpleType>
+	</attribute>
+	<attribute name = 'valid' type = 'integer' use = 'optional' default = '12'/>
+</complexType>
+
+
+<complexType name = 'Certificated'>
+	<complexContent>
+		<extension base = 'tns:Medicine'>
+			<sequence>
+				<element name = 'certificate' type = 'tns:Certificate' />
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name = 'Dosage'>
+	<sequence>
+		<element name = 'amount' type = 'float' />
+		<element name = 'frequency' type = 'integer' />
+		<element name = 'period' type = 'integer'/>
+	</sequence>
+</complexType>
+
+<complexType name = 'Certificate'>
+	<sequence>
+		<element name = 'number' type = 'tns:Number' />
+		<element name = 'issued' type = 'date' />
+		<element name = 'until' type = 'date' />
+		<element name = 'register' type = 'string' />
+	</sequence>
+</complexType>
+
+<simpleType name = 'Number'>
+	<restriction base = 'ID'>
+		<pattern value = 'M-([\w]{3,6})' />
+	</restriction>
+</simpleType>
+
+</schema>
