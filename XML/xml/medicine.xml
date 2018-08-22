@@ -1,0 +1,42 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<medicines xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+			xmlns = 'medicine'
+			xsi:schemaLocation = 'medicine medicine.xsd'>
+
+<certificated name = 'Avelocks' group = 'chemicals' pharm = 'Bayer' valid = '10'>
+	<analogs>Bepanten, C</analogs>
+	<price>12.90</price>
+	<wrapped>2018-01-10T15:42:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>2</amount>
+		<frequency>2</frequency>
+		<period>7</period>
+	</dosage>
+	<certificate>
+		<number>M-123</number>
+		<issued>2012-12-10</issued>
+		<until>2022-12-10</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Bepanten' group = 'chemicals' pharm = 'Bayer'>
+	<analogs>Avelocks, C</analogs>
+	<price>10.90</price>
+	<wrapped>2018-02-18T18:09:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>3</amount>
+		<frequency>1</frequency>
+		<period>7</period>
+	</dosage>
+	<certificate>
+		<number>M-1321</number>
+		<issued>2010-08-14</issued>
+		<until>2020-08-14</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+</medicines>
