@@ -25,6 +25,8 @@
 				<restriction base = 'string'>
 					<enumeration value = 'pills' />
 					<enumeration value = 'syrup' />
+					<enumeration value = 'capsule' />
+					<enumeration value = 'salve' />
 				</restriction>
 			</simpleType>
 		</element>
@@ -36,9 +38,7 @@
 		<simpleType>
 			<restriction base = 'string'>
 				<enumeration value = 'chemicals' />
-				<enumeration value = 'antibiotics' />
 				<enumeration value = 'vitamins' />
-				<enumeration value = 'vaccine' />
 				<enumeration value = 'homeopatic' />
 			</restriction>
 		</simpleType>
