@@ -4,7 +4,7 @@
 			xsi:schemaLocation = 'medicine medicine.xsd'>
 
 <certificated name = 'Avelocks' group = 'chemicals' pharm = 'Bayer' valid = '10'>
-	<analogs>Bepanten, C</analogs>
+	<analogs>Bepanten</analogs>
 	<price>12.90</price>
 	<wrapped>2018-01-10T15:42:00</wrapped>
 	<form>pills</form>
@@ -22,7 +22,7 @@
 </certificated>
 
 <certificated name = 'Bepanten' group = 'chemicals' pharm = 'Bayer'>
-	<analogs>Avelocks, C</analogs>
+	<analogs>Avelocks</analogs>
 	<price>10.90</price>
 	<wrapped>2018-02-18T18:09:00</wrapped>
 	<form>pills</form>
@@ -35,6 +35,258 @@
 		<number>M-1321</number>
 		<issued>2010-08-14</issued>
 		<until>2020-08-14</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Cycledinon' group = 'homeopatic' pharm = 'Pfizer' valid = '24'>
+	<analogs>-</analogs>
+	<price>11.30</price>
+	<wrapped>2018-04-10T12:42:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>1</amount>
+		<frequency>1</frequency>
+		<period>180</period>
+	</dosage>
+	<certificate>
+		<number>M-2113</number>
+		<issued>2005-02-19</issued>
+		<until>2025-02-19</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Akkuzid' group = 'chemicals' pharm = 'Pfizer'>
+	<analogs>-</analogs>
+	<price>15.45</price>
+	<wrapped>2018-07-12T13:09:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>1</amount>
+		<frequency>1</frequency>
+		<period>5</period>
+	</dosage>
+	<certificate>
+		<number>M-2871</number>
+		<issued>2010-05-13</issued>
+		<until>2020-05-13</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Celebreks' group = 'chemicals' pharm = 'Pfizer' valid = '36'>
+	<analogs>-</analogs>
+	<price>10.15</price>
+	<wrapped>2018-08-07T17:19:00</wrapped>
+	<form>capsule</form>
+	<dosage>
+		<amount>1</amount>
+		<frequency>2</frequency>
+		<period>3</period>
+	</dosage>
+	<certificate>
+		<number>M-2761</number>
+		<issued>2012-05-15</issued>
+		<until>2022-05-15</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Suprastin' group = 'chemicals' pharm = 'Egis' valid = '60'>
+	<analogs>-</analogs>
+	<price>17.50</price>
+	<wrapped>2018-06-23T10:59:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>1.5</amount>
+		<frequency>3</frequency>
+		<period>14</period>
+	</dosage>
+	<certificate>
+		<number>M-431</number>
+		<issued>2018-01-21</issued>
+		<until>2028-01-21</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Hartil' group = 'chemicals' pharm = 'Egis' valid = '24'>
+	<analogs>-</analogs>
+	<price>20.0</price>
+	<wrapped>2018-05-09T11:21:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>1</amount>
+		<frequency>2</frequency>
+		<period>21</period>
+	</dosage>
+	<certificate>
+		<number>M-4591</number>
+		<issued>2013-01-30</issued>
+		<until>2023-01-30</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Bi-tol' group = 'chemicals' pharm = 'Vishpha' valid = '36'>
+	<analogs>-</analogs>
+	<price>15.0</price>
+	<wrapped>2017-11-11T07:12:00</wrapped>
+	<form>syrup</form>
+	<dosage>
+		<amount>20</amount>
+		<frequency>2</frequency>
+		<period>10</period>
+	</dosage>
+	<certificate>
+		<number>M-712</number>
+		<issued>2012-02-29</issued>
+		<until>2024-02-29</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Gederin' group = 'chemicals' pharm = 'Vishpha' valid = '60'>
+	<analogs>-</analogs>
+	<price>11.10</price>
+	<wrapped>2017-12-22T09:38:00</wrapped>
+	<form>syrup</form>
+	<dosage>
+		<amount>7.5</amount>
+		<frequency>3</frequency>
+		<period>7</period>
+	</dosage>
+	<certificate>
+		<number>M-7856</number>
+		<issued>2012-02-29</issued>
+		<until>2024-02-29</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Roztiran' group = 'chemicals' pharm = 'Vishpha' valid = '36'>
+	<analogs>-</analogs>
+	<price>13.15</price>
+	<wrapped>2017-12-12T10:30:00</wrapped>
+	<form>salve</form>
+	<dosage>
+		<amount>20</amount>
+		<frequency>4</frequency>
+		<period>3</period>
+	</dosage>
+	<certificate>
+		<number>M-775</number>
+		<issued>2017-02-20</issued>
+		<until>2027-02-20</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Miron' group = 'chemicals' pharm = 'Alarsin' valid = '60'>
+	<analogs>-</analogs>
+	<price>13.15</price>
+	<wrapped>2016-12-27T19:11:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>2</amount>
+		<frequency>2</frequency>
+		<period>30</period>
+	</dosage>
+	<certificate>
+		<number>M-8265</number>
+		<issued>2009-01-15</issued>
+		<until>2019-01-15</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Fortege' group = 'chemicals' pharm = 'Alarsin' valid = '36'>
+	<analogs>-</analogs>
+	<price>14.55</price>
+	<wrapped>2018-02-27T19:11:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>2</amount>
+		<frequency>2</frequency>
+		<period>30</period>
+	</dosage>
+	<certificate>
+		<number>M-825</number>
+		<issued>2009-01-15</issued>
+		<until>2019-01-15</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Leptaden' group = 'chemicals' pharm = 'Alarsin' valid = '36'>
+	<analogs>-</analogs>
+	<price>16.90</price>
+	<wrapped>2017-10-30T17:41:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>2</amount>
+		<frequency>2</frequency>
+		<period>30</period>
+	</dosage>
+	<certificate>
+		<number>M-808</number>
+		<issued>2009-01-15</issued>
+		<until>2019-01-15</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Calcium-D3 Nikomed' group = 'vitamins' pharm = 'Takeda' valid = '30'>
+	<analogs>-</analogs>
+	<price>23.30</price>
+	<wrapped>2018-03-07T16:33:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>1</amount>
+		<frequency>2</frequency>
+		<period>30</period>
+	</dosage>
+	<certificate>
+		<number>M-9643</number>
+		<issued>2010-05-25</issued>
+		<until>2030-05-25</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Cardiomagnil' group = 'chemicals' pharm = 'Takeda' valid = '36'>
+	<analogs>-</analogs>
+	<price>25.0</price>
+	<wrapped>2018-03-13T11:37:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>1</amount>
+		<frequency>1</frequency>
+		<period>10</period>
+	</dosage>
+	<certificate>
+		<number>M-913</number>
+		<issued>2010-05-25</issued>
+		<until>2030-05-25</until>
+		<register>EMA</register>
+	</certificate>
+</certificated>
+
+<certificated name = 'Novonorm' group = 'chemicals' pharm = 'Novo Nordisk' valid = '60'>
+	<analogs>-</analogs>
+	<price>30.10</price>
+	<wrapped>2015-11-30T11:37:00</wrapped>
+	<form>pills</form>
+	<dosage>
+		<amount>0.5</amount>
+		<frequency>1</frequency>
+		<period>14</period>
+	</dosage>
+	<certificate>
+		<number>M-3155</number>
+		<issued>2012-05-25</issued>
+		<until>2022-05-25</until>
 		<register>EMA</register>
 	</certificate>
 </certificated>
