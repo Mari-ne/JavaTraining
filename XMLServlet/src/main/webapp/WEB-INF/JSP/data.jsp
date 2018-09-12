@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>${name}</title>
+</head>
+<body>
+    <h1>Data about medicine ${name}</h1>
+    <table>
+	    <tr>
+		    <th>Parametr</th>
+		    <th>Data</th>
+		</tr>
+		<tr>
+			<td>Group</td>
+			<td>${group}</td>
+		</tr>
+		<tr>
+			<td>Producer</td>
+			<td>${pharm}</td>
+		</tr>
+		<tr>
+			<td>Valid</td>
+			<td>${valid}</td>
+		</tr>
+		<tr>
+			<td>Analogs</td>
+			<td>${analogs}</td>
+		</tr>
+		<tr>
+			<td>Form</td>
+			<td>${form}</td>
+		</tr>
+		<tr>
+			<td>Dosage</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Amount</td>
+			<td>${amount}</td>
+		</tr>
+		<tr>
+			<td>Frequency</td>
+			<td>${freq}</td>
+		<tr>
+		<tr>
+			<td>Period (days)</td>
+			<td>${period}</td>
+		</tr>
+		<tr>
+			<td>Certificate</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Number</td>
+			<td>${number}</td>
+		</tr>
+		<tr>
+			<td>Issued</td>
+			<td>${issued}</td>
+		</tr>
+		<tr>
+			<td>Until</td>
+			<td>${until}</td>
+		</tr>
+		<tr>
+			<td>Registered by</td>
+			<td>${reg}</td>
+		</tr>
+		<tr>
+			<td>Wrapped</td>
+			<td>${wrapped}</td>
+		</tr>
+		<tr>
+			<td>Price</td>
+			<td>${price}</td>
+		</tr>
+    </table>
+</body>
+</html>
