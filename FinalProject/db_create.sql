@@ -320,7 +320,7 @@ BEGIN
 	if new.last_bet is not null and (new.last_bet <> old.last_bet or old.last_bet is null) then
         set new.all_bet = old.all_bet + new.last_bet;
         update result
-        set pool = pool + (pool_part * new.last_bet / 100) * 0.9;
+        set pool = pool + (pool_part * new.last_bet / 100);
         -- 10% пула уходит букмекеру
 	end if;
     if new.last_gain is not null and (new.last_gain <> old.last_gain or old.last_gain is null) then
