@@ -1,0 +1,108 @@
+CREATE TABLE public."User"
+(
+    id serial NOT NULL,
+    login character varying(20) NOT NULL,
+    password character varying(20) NOT NULL,
+    PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+);
+
+ALTER TABLE public."User"
+    OWNER to postgres;
+
+CREATE TABLE public."Country"
+(
+    id serial NOT NULL,
+    name character varying(40) NOT NULL,
+    PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+);
+
+ALTER TABLE public."Country"
+    OWNER to postgres;
+
+CREATE TYPE public."Feature" AS ENUM
+    ('Parking', 'Wi-Fi', 'SPA', 'Car rental', 'Indoor pool', 'Outdoor pool', 'Restaurant', 'Sport facilities');
+
+ALTER TYPE public."Feature"
+    OWNER TO postgres;
+
+CREATE TABLE public."Hotel"
+(
+    id serial NOT NULL,
+    name character varying(30) NOT NULL,
+    starts integer NOT NULL,
+    website text NOT NULL,
+    lalitude numeric NOT NULL,
+    longitude numeric NOT NULL,
+    features "Feature"[],
+    PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+);
+
+ALTER TABLE public."Hotel"
+    OWNER to postgres;
+
+CREATE TYPE public."TourType" AS ENUM
+    ('SPORT_TOUR', 'COMBINE_TOUR', 'SEASONAL_TOUR', 'HONEYMOON_TOUR', 'SIGHTSEEN_TOUR', 'FOOD_TOUR', 'RELAX_TOUR', 'SAFARI_TOUR', 'CRUISE_TOUR', 'ROMANTIC_TOUR');
+
+ALTER TYPE public."TourType"
+    OWNER TO postgres;
+
+ CREATE TABLE public."Tour"
+(
+    id serial NOT NULL,
+    photo text NOT NULL,
+    date date NOT NULL,
+    duration interval NOT NULL,
+    description text,
+    cost money NOT NULL,
+    tour_type "TourType" NOT NULL,
+    hotel_id integer,
+    country_id integer,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_hotel_tour FOREIGN KEY (hotel_id)
+        REFERENCES public."Hotel" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    CONSTRAINT fk_country_tour FOREIGN KEY (country_id)
+        REFERENCES public."Country" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
+)
+WITH (
+    OIDS = FALSE
+);
+
+ALTER TABLE public."Tour"
+    OWNER to postgres;
+
+CREATE TABLE public."Review"
+(
+    id serial NOT NULL,
+    date date NOT NULL,
+    text text NOT NULL,
+    user_id integer,
+    tour_id integer,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_review_user FOREIGN KEY (user_id)
+        REFERENCES public."User" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    CONSTRAINT fk_review_tour FOREIGN KEY (tour_id)
+        REFERENCES public."Tour" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
+)
+WITH (
+    OIDS = FALSE
+);
+
+ALTER TABLE public."Review"
+    OWNER to postgres;
